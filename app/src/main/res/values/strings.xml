@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AluraFood</string>
+    <string name="letras_maiusculas_minusculas_com_espaco_em_branco">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\u0020</string>
 </resources>
