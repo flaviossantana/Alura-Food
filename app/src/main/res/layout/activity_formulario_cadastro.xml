@@ -9,134 +9,77 @@
         android:layout_height="wrap_content">
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/contraintlayout_dados_pessoais"
+            android:id="@+id/contraintlayout_dados_de_cadastro"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/formulario_cadastro_card_dados_pessoais"
+            <TextView
+                android:id="@+id/formulario_cadastro_titulo_dados_pessoais"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/ic_adiciona_pessoa"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_adiciona_pessoa"
+                android:text="@string/dados_pessoais"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/formulario_cadastro_dados_pessoais"
+                layout="@layout/dados_pessoais"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@id/formulario_cadastro_titulo_dados_pessoais"
+                app:layout_constraintStart_toStartOf="@id/formulario_cadastro_titulo_dados_pessoais"
+                app:layout_constraintTop_toBottomOf="@id/formulario_cadastro_titulo_dados_pessoais" />
+
+            <View
+                android:id="@+id/divisor_dados_pessoais"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/darker_gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0">
+                app:layout_constraintTop_toBottomOf="@id/formulario_cadastro_dados_pessoais" />
 
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/formulario_cadastro_titulo_dados_pessoais"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:drawableLeft="@drawable/ic_action_adiciona_pessoa"
-                        android:drawablePadding="10dp"
-                        android:text="@string/dados_pessoais"
-                        android:textSize="24sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" android:drawableStart="@drawable/ic_action_adiciona_pessoa" />
-
-                    <include
-                        android:id="@+id/formulario_cadastro_dados_pessoais"
-                        layout="@layout/dados_pessoais"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@id/formulario_cadastro_titulo_dados_pessoais"
-                        app:layout_constraintStart_toStartOf="@id/formulario_cadastro_titulo_dados_pessoais"
-                        app:layout_constraintTop_toBottomOf="@id/formulario_cadastro_titulo_dados_pessoais" />
-
-                </android.support.constraint.ConstraintLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/formulario_cadastro_card_dados_endereco"
+            <TextView
+                android:id="@+id/formulario_cadastro_titulo_dados_endereco"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/ic_casa"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_casa"
+                android:text="@string/dados_do_endereco"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/formulario_cadastro_card_dados_pessoais">
+                app:layout_constraintTop_toBottomOf="@id/divisor_dados_pessoais" />
 
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/formulario_cadastro_titulo_dados_endereco"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:drawableLeft="@drawable/ic_action_casa"
-                        android:drawablePadding="10dp"
-                        android:text="@string/dados_do_endereco"
-                        android:textSize="24sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" android:drawableStart="@drawable/ic_action_casa" />
-
-                    <include
-                        android:id="@+id/formulario_cadastro_endereco"
-                        layout="@layout/dados_endereco"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="@id/formulario_cadastro_titulo_dados_endereco"
-                        app:layout_constraintStart_toStartOf="@id/formulario_cadastro_titulo_dados_endereco"
-                        app:layout_constraintTop_toBottomOf="@id/formulario_cadastro_titulo_dados_endereco" />
-
-                </android.support.constraint.ConstraintLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/formulario_cadastro_card_pagamento"
+            <include
+                android:id="@+id/formulario_cadastro_endereco"
+                layout="@layout/dados_endereco"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/formulario_cadastro_card_dados_endereco">
-
-                <android.support.constraint.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/formulario_cadastro_titulo_dados_pagamento"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:drawableLeft="@drawable/ic_action_cartao_de_credito"
-                        android:drawablePadding="10dp"
-                        android:text="@string/dados_de_pagamento_e_entrega"
-                        android:textSize="24sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" android:drawableStart="@drawable/ic_action_cartao_de_credito" />
-
-                    <include
-                        android:id="@+id/formulario_cadastro_pagamento"
-                        layout="@layout/dados_pagamento"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="@id/formulario_cadastro_titulo_dados_pagamento"
-                        app:layout_constraintStart_toStartOf="@id/formulario_cadastro_titulo_dados_pagamento"
-                        app:layout_constraintTop_toBottomOf="@+id/formulario_cadastro_titulo_dados_pagamento" />
-
-                </android.support.constraint.ConstraintLayout>
-            </android.support.v7.widget.CardView>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@id/formulario_cadastro_titulo_dados_endereco"
+                app:layout_constraintStart_toStartOf="@id/formulario_cadastro_titulo_dados_endereco"
+                app:layout_constraintTop_toBottomOf="@id/formulario_cadastro_titulo_dados_endereco" />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -144,11 +87,13 @@
             android:id="@+id/formulario_cadastro_botao_cadastrar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="@string/cadastrar"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/contraintlayout_dados_pessoais" />
+            app:layout_constraintTop_toBottomOf="@id/contraintlayout_dados_de_cadastro" />
 
     </android.support.constraint.ConstraintLayout>
+
 </ScrollView>

@@ -1,5 +1,6 @@
 package br.com.alura.alurafood.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,15 @@ public class FormularioCadastroActivity extends AppCompatActivity {
     private EditText telefone;
     private EditText email;
     private EditText senha;
+
+    private EditText cep;
+    private EditText logradouro;
+    private EditText numero;
+    private EditText bairro;
+    private EditText cidade;
+    private EditText uf;
+    private EditText complemento;
+
     private Button botaoCadastra;
 
     @Override
@@ -26,24 +36,52 @@ public class FormularioCadastroActivity extends AppCompatActivity {
     }
 
     private void inicializaCampos() {
-        TextInputLayout textInputNome = findViewById(R.id.formulario_dados_pessoais_nome);
+        camposDadosPessoais();
+        camposDadosEndereco();
+        configuraBotaoCadastrar();
+    }
+
+
+
+    private void camposDadosPessoais() {
+        TextInputLayout textInputNome = findViewById(R.id.dados_pessoais_nome);
         nome = textInputNome.getEditText();
-        TextInputLayout textInputCPF = findViewById(R.id.formulario_dados_pessoais_cpf);
+        TextInputLayout textInputCPF = findViewById(R.id.dados_pessoais_cpf);
         cpf = textInputCPF.getEditText();
-        TextInputLayout textInputTelefone = findViewById(R.id.formulario_dados_pessoais_telefone);
+        TextInputLayout textInputTelefone = findViewById(R.id.dados_pessoais_telefone);
         telefone = textInputTelefone.getEditText();
-        TextInputLayout textInputEmail = findViewById(R.id.formulario_dados_pessoais_email);
+        TextInputLayout textInputEmail = findViewById(R.id.dados_pessoais_email);
         email = textInputEmail.getEditText();
-        TextInputLayout textInputSenha = findViewById(R.id.formulario_dados_pessoais_senha);
+        TextInputLayout textInputSenha = findViewById(R.id.dados_pessoais_senha);
         senha = textInputSenha.getEditText();
+    }
+
+    private void camposDadosEndereco() {
+        TextInputLayout textInputCep = findViewById(R.id.dados_endereco_cep);
+        cep = textInputCep.getEditText();
+        TextInputLayout textInputLogradouro = findViewById(R.id.dados_endereco_logradouro);
+        logradouro = textInputLogradouro.getEditText();
+        TextInputLayout textInputNumero = findViewById(R.id.dados_endereco_numero);
+        numero = textInputNumero.getEditText();
+        TextInputLayout textInputBairro = findViewById(R.id.dados_endereco_bairro);
+        bairro = textInputBairro.getEditText();
+        TextInputLayout textInputCidade = findViewById(R.id.dados_endereco_cidade);
+        cidade = textInputCidade.getEditText();
+        TextInputLayout textInputUf = findViewById(R.id.dados_endereco_uf);
+        uf = textInputUf.getEditText();
+        TextInputLayout textInputComplemento = findViewById(R.id.dados_endereco_complemento);
+        complemento = textInputComplemento.getEditText();
+    }
+
+    private void configuraBotaoCadastrar() {
         botaoCadastra = findViewById(R.id.formulario_cadastro_botao_cadastrar);
         botaoCadastra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent vaiParaPagamento = new Intent(FormularioCadastroActivity.this, FormularioPagamentoActivity.class);
+                startActivity(vaiParaPagamento);
             }
         });
     }
-
 
 }
