@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">AluraFood</string>
     <string name="letras_maiusculas_minusculas_com_espaco_em_branco">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\u0020</string>
+    <string name="dados_pessoais">Dados Pessoais</string>
+    <string name="dados_do_endereco">Dados do endereço</string>
+    <string name="dados_de_pagamento_e_entrega">Dados de pagamento e entrega</string>
+    <string name="cadastrar">Cadastrar</string>
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
 </resources>
