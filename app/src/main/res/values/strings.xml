@@ -9,6 +9,8 @@
     <string name="cep">1234567890-</string>
     <string name="letras_maiusculas">ABCDEFGHIJKLMNOPQRSTUVWXYZ\u0020</string>
     <string name="telefone">123456789()-\u0020</string>
+    <string name="numeros_com_espaco">1234567890\u0020</string>
+    <string name="numeros_com_barra">1234567890/</string>
     <item name="visible" type="id" />
     <item name="masked" type="id" />
 </resources>

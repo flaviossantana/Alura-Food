@@ -9,6 +9,7 @@ import br.com.alura.alurafood.R;
 
 public class FormularioPagamentoActivity extends AppCompatActivity {
 
+    public static final String TITULO_APPBAR = "Pagamento";
     private EditText numeroCartao;
     private EditText mesEAno;
     private EditText cvc;
@@ -18,6 +19,7 @@ public class FormularioPagamentoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagamento);
+        setTitle(TITULO_APPBAR);
         inicializaCampos();
     }
 
