@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.alura.alurafood.ui.activity.ResumoCompraActivity">
+
+
+    <TextView
+        android:id="@+id/compra_realizada_titulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="50dp"
+        android:text="Compra realizada!"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/compra_realizada_titulo_dados_entrega"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_entrega"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/ic_entrega"
+        android:text="Dados da entrega"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/compra_realizada_titulo" />
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/resumo_compra_data_de_entrega"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Data de entrega"
+        app:layout_constraintEnd_toEndOf="@id/compra_realizada_titulo_dados_entrega"
+        app:layout_constraintStart_toStartOf="@id/compra_realizada_titulo_dados_entrega"
+        app:layout_constraintTop_toBottomOf="@id/compra_realizada_titulo_dados_entrega">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:enabled="false"
+            android:focusable="false"
+            android:text="15/03/2018"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/resumo_compra_destinatario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Data de entrega"
+        app:layout_constraintEnd_toEndOf="@id/compra_realizada_titulo_dados_entrega"
+        app:layout_constraintStart_toStartOf="@id/compra_realizada_titulo_dados_entrega"
+        app:layout_constraintTop_toBottomOf="@id/resumo_compra_data_de_entrega">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:enabled="false"
+            android:focusable="false"
+            android:text="Alex Felipe"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/resumo_compra_endereco"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Data de entrega"
+        app:layout_constraintEnd_toEndOf="@id/resumo_compra_destinatario"
+        app:layout_constraintStart_toStartOf="@id/resumo_compra_destinatario"
+        app:layout_constraintTop_toBottomOf="@id/resumo_compra_destinatario">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:enabled="false"
+            android:focusable="false"
+            android:text="Rua Vergueiro, 3185 - Vila Mariana, São Paulo - SP, 04101-300"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/resumo_compra_valor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Data de entrega"
+        app:layout_constraintEnd_toEndOf="@id/resumo_compra_endereco"
+        app:layout_constraintStart_toStartOf="@id/resumo_compra_endereco"
+        app:layout_constraintTop_toBottomOf="@+id/resumo_compra_endereco">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:enabled="false"
+            android:focusable="false"
+            android:text="R$ 200,00"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,8 +1,11 @@
 package br.com.alura.alurafood.ui.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import br.com.alura.alurafood.R;
@@ -14,6 +17,7 @@ public class FormularioPagamentoActivity extends AppCompatActivity {
     private EditText mesEAno;
     private EditText cvc;
     private EditText nomeNoCartao;
+    private Button botaoFinalizaCompra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,5 +36,14 @@ public class FormularioPagamentoActivity extends AppCompatActivity {
         cvc = textInputLayoutCvc.getEditText();
         TextInputLayout textInputLayoutNomeNoCartao = findViewById(R.id.dados_pagamento_nome_no_cartao);
         nomeNoCartao = textInputLayoutNomeNoCartao.getEditText();
+        botaoFinalizaCompra = findViewById(R.id.pagamento_botao_finaliza_compra);
+        botaoFinalizaCompra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent vaiParaCompraRealizada = new Intent(FormularioPagamentoActivity.this, ResumoCompraActivity.class);
+                startActivity(vaiParaCompraRealizada);
+            }
+        });
     }
+
 }

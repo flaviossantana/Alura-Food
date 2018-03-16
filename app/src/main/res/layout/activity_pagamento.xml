@@ -100,5 +100,15 @@
                 android:maxLength="50" />
         </android.support.design.widget.TextInputLayout>
 
+        <Button android:id="@+id/pagamento_botao_finaliza_compra"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Finalizar compra"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/dados_pagamento_numero_cartao"
+            app:layout_constraintStart_toStartOf="@id/dados_pagamento_numero_cartao"
+            app:layout_constraintTop_toBottomOf="@id/dados_pagamento_nome_no_cartao" />
+
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
