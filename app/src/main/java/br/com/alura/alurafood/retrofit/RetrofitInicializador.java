@@ -10,13 +10,14 @@ import static okhttp3.logging.HttpLoggingInterceptor.Level.BODY;
 
 public class RetrofitInicializador {
 
+    public static final String URL_BASE = "https://viacep.com.br/ws/";
     private final Retrofit retrofit;
 
     public RetrofitInicializador() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor().setLevel(BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
         retrofit = new Retrofit.Builder()
-                .baseUrl("https://viacep.com.br/ws/")
+                .baseUrl(URL_BASE)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

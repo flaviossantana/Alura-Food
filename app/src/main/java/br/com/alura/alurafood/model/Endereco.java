@@ -1,12 +1,15 @@
 package br.com.alura.alurafood.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Endereco {
 
     private String cep;
     private String logradouro;
     private String complemento;
+    @SerializedName("localidade")
+    private String cidade;
     private String bairro;
-    private String localidade;
     private String uf;
 
     public String getCep() {
@@ -41,12 +44,12 @@ public class Endereco {
         this.bairro = bairro;
     }
 
-    public String getLocalidade() {
-        return localidade;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setLocalidade(String localidade) {
-        this.localidade = localidade;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public String getUf() {
@@ -63,8 +66,8 @@ public class Endereco {
                 "cep='" + cep + '\'' +
                 ", logradouro='" + logradouro + '\'' +
                 ", complemento='" + complemento + '\'' +
+                ", cidade='" + cidade + '\'' +
                 ", bairro='" + bairro + '\'' +
-                ", localidade='" + localidade + '\'' +
                 ", uf='" + uf + '\'' +
                 '}';
     }
