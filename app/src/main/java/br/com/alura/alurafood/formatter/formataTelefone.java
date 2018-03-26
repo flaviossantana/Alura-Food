@@ -1,4 +1,4 @@
-package br.com.alura.alurafood.formatador;
+package br.com.alura.alurafood.formatter;
 
 public class formataTelefone implements Formatador {
 

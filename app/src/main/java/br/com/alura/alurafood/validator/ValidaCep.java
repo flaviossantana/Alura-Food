@@ -1,23 +1,23 @@
 package br.com.alura.alurafood.validator;
 
-public class ValidaEmail implements Validador {
+public class ValidaCep implements Validador {
 
-    private static final String PADRAO_EMAIL = ".+@.+\\..+";
-    public static final String EMAIL_INVALIDO = "E-mail inválido";
     public static final String CAMPO_OBRIGATORIO = "Campo obrigatório";
     private String erro = "";
 
     @Override
-    public boolean valida(String email) {
+    public boolean valida(String cep) {
 
-        if (email.isEmpty()) {
+        if (cep.isEmpty()) {
             erro = CAMPO_OBRIGATORIO;
             return false;
         }
-        if (!email.matches(PADRAO_EMAIL)) {
-            erro = EMAIL_INVALIDO;
+
+        if (cep.length() != 8) {
+            erro = "CEP precisa de 8 dígitos";
             return false;
         }
+
         erro = "";
         return true;
     }

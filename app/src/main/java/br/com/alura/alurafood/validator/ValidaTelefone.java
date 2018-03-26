@@ -4,7 +4,7 @@ public class ValidaTelefone implements Validador {
 
     public static final String CAMPO_OBRIGATORIO = "Campo obrigatório";
     public static final String LIMITE_CARACTERES = "Precisa ter entre 10 a 11 dígitos";
-    private String erro;
+    private String erro = "";
 
     @Override
     public boolean valida(String telefone) {
@@ -20,6 +20,7 @@ public class ValidaTelefone implements Validador {
             return false;
         }
 
+        erro = "";
         return true;
     }
 

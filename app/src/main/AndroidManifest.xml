@@ -12,14 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.FormularioCadastroActivity">
+        <activity
+            android:name=".ui.activity.FormularioCadastroActivity"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.FormularioPagamentoActivity" />
+        <activity
+            android:name=".ui.activity.FormularioPagamentoActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".ui.activity.ResumoCompraActivity"></activity>
     </application>
 

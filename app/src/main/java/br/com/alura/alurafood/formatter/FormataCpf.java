@@ -1,4 +1,4 @@
-package br.com.alura.alurafood.formatador;
+package br.com.alura.alurafood.formatter;
 
 import br.com.caelum.stella.format.CPFFormatter;
 
