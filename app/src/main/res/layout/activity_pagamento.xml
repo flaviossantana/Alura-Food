@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dados_pagamento_titulo_valor_da_compra"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Valor da compra: "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dados_pagamento_valor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="R$ 230,00"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="@id/dados_pagamento_titulo_valor_da_compra"
+            app:layout_constraintStart_toStartOf="@id/dados_pagamento_titulo_valor_da_compra"
+            app:layout_constraintTop_toBottomOf="@+id/dados_pagamento_titulo_valor_da_compra" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/dados_pagamento_numero_cartao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Número do cartão"
+            app:layout_constraintEnd_toEndOf="@id/dados_pagamento_valor"
+            app:layout_constraintStart_toStartOf="@+id/dados_pagamento_valor"
+            app:layout_constraintTop_toBottomOf="@id/dados_pagamento_valor">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="16"
+                tools:drawableEnd="@drawable/ic_visa"
+                tools:drawableRight="@drawable/ic_visa" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/dados_pagamento_mes"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:hint="MM"
+            app:layout_constraintStart_toStartOf="@+id/dados_pagamento_numero_cartao"
+            app:layout_constraintTop_toBottomOf="@+id/dados_pagamento_numero_cartao">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="2" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/dados_pagamento_ano"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:hint="AA"
+            app:layout_constraintStart_toEndOf="@id/dados_pagamento_mes"
+            app:layout_constraintTop_toBottomOf="@+id/dados_pagamento_numero_cartao">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="2" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/dados_pagamento_cvc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="CVC"
+            android:minWidth="80dp"
+            app:layout_constraintEnd_toEndOf="@+id/dados_pagamento_numero_cartao"
+            app:layout_constraintTop_toBottomOf="@+id/dados_pagamento_numero_cartao">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_cvc_cartao_de_credito"
+                android:inputType="number"
+                android:maxLength="4" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/dados_pagamento_nome_no_cartao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Nome no cartão"
+            app:layout_constraintEnd_toEndOf="@+id/dados_pagamento_numero_cartao"
+            app:layout_constraintStart_toStartOf="@id/dados_pagamento_numero_cartao"
+            app:layout_constraintTop_toBottomOf="@+id/dados_pagamento_mes">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="@string/letras_maiusculas_minusculas_com_espaco_em_branco"
+                android:maxLength="50" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/pagamento_botao_finaliza_compra"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Finalizar compra"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/dados_pagamento_numero_cartao"
+            app:layout_constraintStart_toStartOf="@id/dados_pagamento_numero_cartao"
+            app:layout_constraintTop_toBottomOf="@id/dados_pagamento_nome_no_cartao" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

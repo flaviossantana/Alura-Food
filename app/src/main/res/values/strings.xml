@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">AluraFood</string>
+    <string name="letras_maiusculas_minusculas_com_espaco_em_branco">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\u0020</string>
+    <string name="dados_pessoais">Dados Pessoais</string>
+    <string name="dados_do_endereco">Dados do endereço</string>
+    <string name="dados_de_pagamento">Dados de pagamento</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="numeros">1234567890</string>
+    <string name="cep">1234567890-</string>
+    <string name="letras_maiusculas">ABCDEFGHIJKLMNOPQRSTUVWXYZ\u0020</string>
+    <string name="telefone">123456789()-\u0020</string>
+    <string name="numeros_com_espaco">1234567890\u0020</string>
+    <string name="numeros_com_barra">1234567890/</string>
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
+</resources>
