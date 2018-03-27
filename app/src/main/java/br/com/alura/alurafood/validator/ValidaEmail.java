@@ -1,29 +1,38 @@
 package br.com.alura.alurafood.validator;
 
-public class ValidaEmail implements Validador {
+import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
+import android.widget.EditText;
+
+public class ValidaEmail extends ValidadorPadrao {
 
     private static final String PADRAO_EMAIL = ".+@.+\\..+";
     public static final String EMAIL_INVALIDO = "E-mail inválido";
     public static final String CAMPO_OBRIGATORIO = "Campo obrigatório";
-    private String erro = "";
 
-    @Override
-    public boolean valida(String email) {
-
-        if (email.isEmpty()) {
-            erro = CAMPO_OBRIGATORIO;
-            return false;
-        }
-        if (!email.matches(PADRAO_EMAIL)) {
-            erro = EMAIL_INVALIDO;
-            return false;
-        }
-        erro = "";
-        return true;
+    public ValidaEmail(TextInputLayout textInputLayout) {
+        this(textInputLayout.getEditText());
+        this.textInputLayout = textInputLayout;
     }
 
-    @Override
-    public String getErro() {
-        return erro;
+    public ValidaEmail(EditText campo) {
+        super(campo);
+        setEmValidacao(adicionaValidacao());
     }
+
+    @NonNull
+    private EmValidacao adicionaValidacao() {
+        return email -> {
+            if (email.isEmpty()) {
+                erro = CAMPO_OBRIGATORIO;
+                return false;
+            }
+            if (!email.matches(PADRAO_EMAIL)) {
+                erro = EMAIL_INVALIDO;
+                return false;
+            }
+            return true;
+        };
+    }
+
 }

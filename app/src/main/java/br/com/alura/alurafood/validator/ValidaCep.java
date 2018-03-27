@@ -1,29 +1,62 @@
 package br.com.alura.alurafood.validator;
 
-public class ValidaCep implements Validador {
+import android.support.annotation.NonNull;
+import android.text.InputFilter;
+import android.widget.EditText;
 
-    public static final String CAMPO_OBRIGATORIO = "Campo obrigatório";
-    private String erro = "";
+import br.com.alura.alurafood.formatter.FormataCep;
+import br.com.alura.alurafood.formatter.Formatador;
 
-    @Override
-    public boolean valida(String cep) {
+public class ValidaCep extends ValidadorPadrao {
 
-        if (cep.isEmpty()) {
-            erro = CAMPO_OBRIGATORIO;
-            return false;
-        }
+    public static final String DIGITOS_MINIMOS = "CEP precisa de 8 dígitos";
+    private Formatador formatador = new FormataCep();
 
-        if (cep.length() != 8) {
-            erro = "CEP precisa de 8 dígitos";
-            return false;
-        }
-
-        erro = "";
-        return true;
+    public ValidaCep(EditText campo) {
+        super(campo);
+        setEmValidacao(adicionaValidacao());
+        setEstadoDeValidacao(configuraEstadoDeValidacao());
     }
 
-    @Override
-    public String getErro() {
-        return erro;
+    @NonNull
+    private EmValidacao adicionaValidacao() {
+        return texto -> {
+            if (texto.length() < 8) {
+                erro = DIGITOS_MINIMOS;
+                return false;
+            }
+            return true;
+        };
+    }
+
+    @NonNull
+    private EstadoDeValidacao configuraEstadoDeValidacao() {
+        return new EstadoDeValidacao() {
+            @Override
+            public void estaValido(String cep) {
+                mostraMascara(cep);
+            }
+
+            @Override
+            public void naoEstaValido(String cep) {
+                removeMascara(cep);
+            }
+        };
+    }
+
+    private void removeMascara(String cep) {
+        String cepSemMascara = formatador.semMascara(cep);
+        campo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
+        campo.setText(cepSemMascara);
+    }
+
+    private void mostraMascara(String cep) {
+        String cepComMascara = formatador.comMascara(cep);
+        campo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(9)});
+        campo.setText(cepComMascara);
+    }
+
+    public String cepSemMascara() {
+        return formatador.semMascara(campo.getText().toString());
     }
 }

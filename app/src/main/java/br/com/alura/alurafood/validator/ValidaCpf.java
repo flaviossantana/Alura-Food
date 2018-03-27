@@ -1,47 +1,92 @@
 package br.com.alura.alurafood.validator;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
+import android.text.InputFilter;
+import android.view.View;
+import android.widget.EditText;
+
 import java.util.List;
 
+import br.com.alura.alurafood.formatter.FormataCpf;
+import br.com.alura.alurafood.formatter.Formatador;
 import br.com.caelum.stella.ValidationMessage;
 import br.com.caelum.stella.validation.CPFValidator;
 
-/**
- * Created by alexf on 21/03/18.
- */
+public class ValidaCpf extends ValidadorPadrao {
 
-public class ValidaCpf implements Validador {
-
-    public static final String CAMPO_OBRIGATORIO = "Campo obrigatório";
     public static final String LIMITE_CARACTERES = "CPF deve ter 11 dígitos";
     public static final String INVALIDO = "CPF inválido";
-    private String erro = "";
+    private Formatador formatador = new FormataCpf();
 
-    @Override
-    public boolean valida(String cpf) {
-
-        if (cpf.isEmpty()) {
-            erro = CAMPO_OBRIGATORIO;
-            return false;
-        }
-
-        if (cpf.length() != 11) {
-            erro = LIMITE_CARACTERES;
-            return false;
-        }
-
-        CPFValidator validador = new CPFValidator();
-        List<ValidationMessage> erros = validador.invalidMessagesFor(cpf);
-        if (!erros.isEmpty()) {
-            erro = INVALIDO;
-            return false;
-        }
-
-        erro = "";
-        return true;
+    public ValidaCpf(TextInputLayout textInputLayout) {
+        this(textInputLayout.getEditText());
+        this.textInputLayout = textInputLayout;
     }
 
-    @Override
-    public String getErro() {
-        return erro;
+    public ValidaCpf(EditText campo) {
+        super(campo);
+        campo.setOnFocusChangeListener(configuraEstadoDeFoco(campo));
+        setEmValidacao(adicionaValidacao());
+        setEstadoDeValidacao(configuraEstadoDeValidacao());
     }
+
+    @NonNull
+    private EstadoDeValidacao configuraEstadoDeValidacao() {
+        return new EstadoDeValidacao() {
+            @Override
+            public void estaValido(String cpf) {
+                mostraMascara(cpf);
+            }
+
+            @Override
+            public void naoEstaValido(String cpf) {
+                removeMascara(cpf);
+            }
+        };
+    }
+
+    @NonNull
+    private View.OnFocusChangeListener configuraEstadoDeFoco(EditText campo) {
+        return (v, hasFocus) -> {
+            String cpf = campo.getText().toString();
+            if (hasFocus) {
+                removeMascara(cpf);
+            } else if (super.valida()) {
+                mostraMascara(cpf);
+            }
+        };
+    }
+
+    @NonNull
+    private EmValidacao adicionaValidacao() {
+        return cpf -> {
+            if (cpf.length() != 11) {
+                erro = LIMITE_CARACTERES;
+                return false;
+            }
+
+            CPFValidator validador = new CPFValidator();
+            List<ValidationMessage> erros = validador.invalidMessagesFor(cpf);
+            if (!erros.isEmpty()) {
+                erro = INVALIDO;
+                return false;
+            }
+
+            return true;
+        };
+    }
+
+    private void removeMascara(String cpf) {
+        String cpfSemMascara = formatador.semMascara(cpf);
+        campo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
+        campo.setText(cpfSemMascara);
+    }
+
+    private void mostraMascara(String cpf) {
+        String cpfComMascara = formatador.comMascara(cpf);
+        campo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(14)});
+        campo.setText(cpfComMascara);
+    }
+
 }

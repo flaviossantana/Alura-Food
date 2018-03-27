@@ -1,25 +1,24 @@
 package br.com.alura.alurafood.ui.view;
 
-import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
-import android.text.InputFilter;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import br.com.alura.alurafood.R;
-import br.com.alura.alurafood.formatter.FormataCep;
-import br.com.alura.alurafood.formatter.Formatador;
 import br.com.alura.alurafood.model.Endereco;
 import br.com.alura.alurafood.retrofit.RetrofitInicializador;
-import br.com.alura.alurafood.validator.EditTextValidadorPadrao;
 import br.com.alura.alurafood.validator.ValidaCep;
-import br.com.alura.alurafood.validator.ValidaNumero;
 import br.com.alura.alurafood.validator.Validador;
+import br.com.alura.alurafood.validator.ValidadorPadrao;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,6 +34,7 @@ public class DadosEnderecoView {
     private final TextInputLayout textInputCidade;
     private final TextInputLayout textInputUf;
     private final TextInputLayout textInputComplemento;
+    List<Validador> validadores = new ArrayList<>();
     private final ImageView botaoBuscaEndereco;
     private final ProgressBar buscaEnderecoProgressBar;
     private final ConstraintLayout telaFormularioCadastro;
@@ -54,63 +54,23 @@ public class DadosEnderecoView {
     }
 
     private void configuraListenersCamposDadosEndereco() {
-        EditTextValidadorPadrao validador = new EditTextValidadorPadrao();
-        EditText campoCep = textInputCep.getEditText();
-        campoCep.setOnFocusChangeListener(validaCep(campoCep));
-        configuraBotaoBuscaEndereco(campoCep);
-        EditText campoLogradouro = textInputLogradouro.getEditText();
-        EditText campoNumero = textInputNumero.getEditText();
-        new ValidaNumero().add(campoNumero);
-        EditText campoBairro = textInputBairro.getEditText();
-        EditText campoCidade = textInputCidade.getEditText();
-        EditText campoUf = textInputUf.getEditText();
-        validador.add(campoLogradouro,
-                campoBairro, campoCidade, campoUf);
+        ValidaCep validaCep = new ValidaCep(textInputCep.getEditText());
+        validadores.addAll(Arrays.asList(
+                validaCep,
+                new ValidadorPadrao(textInputLogradouro.getEditText()),
+                new ValidadorPadrao(textInputNumero.getEditText()),
+                new ValidadorPadrao(textInputBairro.getEditText()),
+                new ValidadorPadrao(textInputCidade.getEditText()),
+                new ValidadorPadrao(textInputUf.getEditText())));
+        configuraBotaoBuscaEndereco(validaCep);
     }
 
-    private void configuraBotaoBuscaEndereco(EditText campoCep) {
-        Validador validador = new ValidaCep();
-        Formatador formatador = new FormataCep();
+    private void configuraBotaoBuscaEndereco(ValidaCep validador) {
         botaoBuscaEndereco.setOnClickListener(v -> {
-            String cep = campoCep.getText().toString();
-            String cepSemMascara = formatador.semMascara(cep);
-            if (validador.valida(cepSemMascara)) {
-                campoCep.setFilters(new InputFilter[]{new InputFilter.LengthFilter(9)});
-                buscaEndereco(cepSemMascara);
-                String cepComMascara = formatador.comMascara(cepSemMascara);
-                campoCep.setText(cepComMascara);
-                campoCep.setError(null);
-            } else {
-                campoCep.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
-                campoCep.setText(cepSemMascara);
-                String erro = validador.getErro();
-                campoCep.setError(erro);
+            if (validador.valida()) {
+                buscaEndereco(validador.cepSemMascara());
             }
         });
-    }
-
-    @NonNull
-    private View.OnFocusChangeListener validaCep(EditText campoCep) {
-        Validador validador = new ValidaCep();
-        Formatador formatador = new FormataCep();
-        return (v, hasFocus) -> {
-            String cep = campoCep.getText().toString();
-            String cepSemMascara = formatador.semMascara(cep);
-
-            if (hasFocus) {
-                campoCep.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
-                campoCep.setText(cepSemMascara);
-            } else {
-                if (validador.valida(cepSemMascara)) {
-                    String cepComMascara = formatador.comMascara(cepSemMascara);
-                    campoCep.setFilters(new InputFilter[]{new InputFilter.LengthFilter(9)});
-                    campoCep.setText(cepComMascara);
-                    campoCep.setError(null);
-                } else {
-                    campoCep.setError(validador.getErro());
-                }
-            }
-        };
     }
 
     private void buscaEndereco(String cep) {
@@ -151,6 +111,17 @@ public class DadosEnderecoView {
         campoCidade.setText(endereco.getCidade());
         EditText campoUF = textInputUf.getEditText();
         campoUF.setText(endereco.getUf());
+    }
+
+    public boolean camposValido() {
+        boolean valido = true;
+        for (Validador validor :
+                validadores) {
+            if (!validor.valida()) {
+                valido = false;
+            }
+        }
+        return valido;
     }
 
 }

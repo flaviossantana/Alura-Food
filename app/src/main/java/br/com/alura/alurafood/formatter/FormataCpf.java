@@ -4,8 +4,6 @@ import br.com.caelum.stella.format.CPFFormatter;
 
 public class FormataCpf implements Formatador {
 
-
-
     @Override
     public String comMascara(String cpfSemMascara) {
         CPFFormatter cpfFormatter = new CPFFormatter();
