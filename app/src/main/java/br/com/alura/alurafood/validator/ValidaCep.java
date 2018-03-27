@@ -2,6 +2,7 @@ package br.com.alura.alurafood.validator;
 
 import android.support.annotation.NonNull;
 import android.text.InputFilter;
+import android.view.View;
 import android.widget.EditText;
 
 import br.com.alura.alurafood.formatter.FormataCep;
@@ -14,14 +15,28 @@ public class ValidaCep extends ValidadorPadrao {
 
     public ValidaCep(EditText campo) {
         super(campo);
+        campo.setOnFocusChangeListener(configuraEstadoDeFoco());
         setEmValidacao(adicionaValidacao());
         setEstadoDeValidacao(configuraEstadoDeValidacao());
     }
 
     @NonNull
+    private View.OnFocusChangeListener configuraEstadoDeFoco() {
+        return (v, hasFocus) -> {
+            String telefone = campo.getText().toString();
+            if (hasFocus) {
+                removeMascara(telefone);
+            } else if (super.valida()) {
+                mostraMascara(telefone);
+            }
+        };
+    }
+
+    @NonNull
     private EmValidacao adicionaValidacao() {
-        return texto -> {
-            if (texto.length() < 8) {
+        return cep -> {
+            String cepSemMascara = formatador.semMascara(cep);
+            if (cepSemMascara.length() != 8) {
                 erro = DIGITOS_MINIMOS;
                 return false;
             }
@@ -34,6 +49,7 @@ public class ValidaCep extends ValidadorPadrao {
         return new EstadoDeValidacao() {
             @Override
             public void estaValido(String cep) {
+                removeMascara(cep);
                 mostraMascara(cep);
             }
 

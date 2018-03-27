@@ -1,5 +1,6 @@
 package br.com.alura.alurafood.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -35,10 +36,9 @@ public class FormularioCadastroActivity extends AppCompatActivity {
         Button button = findViewById(R.id.formulario_cadastro_botao_cadastrar);
         button.setOnClickListener(v -> {
             if (dadosEnderecoView.camposValido() & dadosPessoaisView.camposValido()) {
-
+            Intent vaiParaPagamento = new Intent(this, FormularioPagamentoActivity.class);
+            startActivity(vaiParaPagamento);
             }
-//            Intent vaiParaPagamento = new Intent(this, FormularioPagamentoActivity.class);
-//            startActivity(vaiParaPagamento);
         });
     }
 

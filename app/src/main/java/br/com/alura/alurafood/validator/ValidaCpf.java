@@ -36,7 +36,8 @@ public class ValidaCpf extends ValidadorPadrao {
         return new EstadoDeValidacao() {
             @Override
             public void estaValido(String cpf) {
-                mostraMascara(cpf);
+                String cpfSemMascara = formatador.semMascara(cpf);
+                mostraMascara(cpfSemMascara);
             }
 
             @Override
@@ -61,13 +62,14 @@ public class ValidaCpf extends ValidadorPadrao {
     @NonNull
     private EmValidacao adicionaValidacao() {
         return cpf -> {
-            if (cpf.length() != 11) {
+            String cpfSemMascara = formatador.semMascara(cpf);
+            if (cpfSemMascara.length() != 11) {
                 erro = LIMITE_CARACTERES;
                 return false;
             }
 
             CPFValidator validador = new CPFValidator();
-            List<ValidationMessage> erros = validador.invalidMessagesFor(cpf);
+            List<ValidationMessage> erros = validador.invalidMessagesFor(cpfSemMascara);
             if (!erros.isEmpty()) {
                 erro = INVALIDO;
                 return false;

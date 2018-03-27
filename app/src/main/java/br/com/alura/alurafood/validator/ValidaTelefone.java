@@ -3,6 +3,7 @@ package br.com.alura.alurafood.validator;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.text.InputFilter;
+import android.view.View;
 import android.widget.EditText;
 
 import br.com.alura.alurafood.formatter.Formatador;
@@ -20,14 +21,7 @@ public class ValidaTelefone extends ValidadorPadrao {
 
     public ValidaTelefone(EditText campo) {
         super(campo);
-        campo.setOnFocusChangeListener((v, hasFocus) -> {
-            String telefone = campo.getText().toString();
-            if (hasFocus) {
-                removeMascara(telefone);
-            } else if (super.valida()) {
-                mostraMascara(telefone);
-            }
-        });
+        campo.setOnFocusChangeListener(configuraEstadoDeFoco(campo));
         setEmValidacao(adicionaValidacao());
         setEstadoDeValidacao(new EstadoDeValidacao() {
             @Override
@@ -43,9 +37,22 @@ public class ValidaTelefone extends ValidadorPadrao {
     }
 
     @NonNull
+    private View.OnFocusChangeListener configuraEstadoDeFoco(EditText campo) {
+        return (v, hasFocus) -> {
+            String telefone = campo.getText().toString();
+            if (hasFocus) {
+                removeMascara(telefone);
+            } else if (super.valida()) {
+                mostraMascara(telefone);
+            }
+        };
+    }
+
+    @NonNull
     private EmValidacao adicionaValidacao() {
         return telefone -> {
-            int caracteres = telefone.length();
+            String telefoneSemMascara = formatador.semMascara(telefone);
+            int caracteres = telefoneSemMascara.length();
             if (caracteres < 10 || caracteres > 11) {
                 erro = LIMITE_CARACTERES;
                 return false;
