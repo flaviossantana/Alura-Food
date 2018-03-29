@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/resumo_compra_titulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="30dp"
+        android:text="@string/compra_realizada"
+        android:textColor="@android:color/white"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/resumo_compra_titulo_dados_entrega"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_entrega"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/ic_entrega"
+        android:text="@string/dados_da_entrega"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resumo_compra_titulo" />
+
+    <TextView
+        android:id="@+id/resumo_compra_titulo_data_de_entrega"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/data_de_entrega"
+        app:layout_constraintEnd_toEndOf="@+id/resumo_compra_titulo_dados_entrega"
+        app:layout_constraintStart_toStartOf="@+id/resumo_compra_titulo_dados_entrega"
+        app:layout_constraintTop_toBottomOf="@+id/resumo_compra_titulo_dados_entrega" />
+
+    <TextView
+        android:id="@+id/resumo_compra_data_de_entrega"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="28/03/2018"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/resumo_compra_titulo_data_de_entrega"
+        app:layout_constraintStart_toStartOf="@+id/resumo_compra_titulo_data_de_entrega"
+        app:layout_constraintTop_toBottomOf="@+id/resumo_compra_titulo_data_de_entrega" />
+
+    <TextView
+        android:id="@+id/resumo_compra_titulo_destinatario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/destinatario"
+        app:layout_constraintEnd_toEndOf="@+id/resumo_compra_data_de_entrega"
+        app:layout_constraintStart_toStartOf="@+id/resumo_compra_data_de_entrega"
+        app:layout_constraintTop_toBottomOf="@+id/resumo_compra_data_de_entrega" />
+
+    <TextView
+        android:id="@+id/resumo_compra_destinatario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Alex Felipe"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/resumo_compra_titulo_destinatario"
+        app:layout_constraintStart_toStartOf="@+id/resumo_compra_titulo_destinatario"
+        app:layout_constraintTop_toBottomOf="@+id/resumo_compra_titulo_destinatario" />
+
+    <TextView
+        android:id="@+id/resumo_compra_titulo_endereco"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/endereco"
+        app:layout_constraintEnd_toEndOf="@+id/resumo_compra_destinatario"
+        app:layout_constraintStart_toStartOf="@+id/resumo_compra_destinatario"
+        app:layout_constraintTop_toBottomOf="@+id/resumo_compra_destinatario" />
+
+    <TextView
+        android:id="@+id/resumo_compra_endereco"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Rua Vergueiro, 3185 - Vila Mariana, São Paulo - SP, 04101-300"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/resumo_compra_titulo_endereco"
+        app:layout_constraintStart_toStartOf="@+id/resumo_compra_titulo_endereco"
+        app:layout_constraintTop_toBottomOf="@+id/resumo_compra_titulo_endereco" />
+
+    <TextView
+        android:id="@+id/resumo_compra_titulo_valor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/valor"
+        app:layout_constraintEnd_toEndOf="@+id/resumo_compra_endereco"
+        app:layout_constraintStart_toStartOf="@+id/resumo_compra_endereco"
+        app:layout_constraintTop_toBottomOf="@+id/resumo_compra_endereco" />
+
+    <TextView
+        android:id="@+id/resumo_compra_valor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="R$ 200,00"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/resumo_compra_titulo_valor"
+        app:layout_constraintStart_toStartOf="@id/resumo_compra_titulo_valor"
+        app:layout_constraintTop_toBottomOf="@+id/resumo_compra_titulo_valor" />
+
+</android.support.constraint.ConstraintLayout>

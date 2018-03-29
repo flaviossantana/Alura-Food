@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">AluraFood</string>
+    <string name="letras_maiusculas_minusculas_com_espaco_em_branco">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\u0020</string>
+    <string name="dados_pessoais">Dados Pessoais</string>
+    <string name="dados_do_endereco">Dados do endereço</string>
+    <string name="numeros">1234567890</string>
+    <string name="letras_maiusculas">ABCDEFGHIJKLMNOPQRSTUVWXYZ\u0020</string>
+    <string name="lupa_busca_endereco">Ícone de lupa para buscar endereço por CEP</string>
+    <string name="nome_completo">Nome completo</string>
+    <string name="cpf">CPF</string>
+    <string name="telefone_com_ddd">Telefone com DDD</string>
+    <string name="email">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="cep">CEP</string>
+    <string name="logradouro">Logradouro</string>
+    <string name="numero">Número</string>
+    <string name="bairro">Bairro</string>
+    <string name="cidade">Cidade</string>
+    <string name="uf">UF</string>
+    <string name="complemento">Complemento</string>
+    <string name="valor_da_compra">Valor da compra</string>
+    <string name="numero_do_cartao">Número do cartão</string>
+    <string name="mm">MM</string>
+    <string name="aa">AA</string>
+    <string name="cvc">CVC</string>
+    <string name="nome_no_cartao">Nome no cartão</string>
+    <string name="finalizar_compra">Finalizar compra</string>
+    <string name="compra_realizada">Compra realizada!</string>
+    <string name="dados_da_entrega">Dados da entrega</string>
+    <string name="data_de_entrega">Data de entrega</string>
+    <string name="destinatario">Destinatário</string>
+    <string name="endereco">Endereço</string>
+    <string name="valor">Valor</string>
+    <string name="cadastrar">Cadastrar</string>
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
+</resources>
