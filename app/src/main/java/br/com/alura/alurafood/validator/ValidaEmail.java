@@ -27,12 +27,16 @@ public class ValidaEmail extends ValidadorPadrao {
                 erro = CAMPO_OBRIGATORIO;
                 return false;
             }
-            if (!email.matches(PADRAO_EMAIL)) {
+            if (naoAtingePadrao(email)) {
                 erro = EMAIL_INVALIDO;
                 return false;
             }
             return true;
         };
+    }
+
+    private boolean naoAtingePadrao(String email) {
+        return !email.matches(PADRAO_EMAIL);
     }
 
 }

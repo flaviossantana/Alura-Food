@@ -11,8 +11,14 @@ import br.com.moip.validators.CreditCard;
 
 public class ValidaNumeroCartao extends ValidadorPadrao {
 
+    public static final int DIGITOS_MINIMO = 14;
+    public static final int DIGITOS_MAXIMO = 16;
     private static final String CARTAO_INVALIDO = "Número de cartão de crédito inválido";
-    private static final String LIMITE_CARACTERES = "Precisa ter entre 14 a 16 dígitos";
+    private static final String LIMITE_DIGITOS = "Precisa ter entre " + DIGITOS_MINIMO +
+            " a " + DIGITOS_MAXIMO + " dígitos";
+    public static final int DIGITOS_COM_MASCARA = 19;
+    public static final int DIGITOS_SEM_MASCARA = 16;
+    public static final int SEM_ICONE = 0;
     private final Formatador formatador = new FormataNumeroCartaoDeCredito();
 
     public ValidaNumeroCartao(TextInputLayout textInputLayout) {
@@ -24,17 +30,17 @@ public class ValidaNumeroCartao extends ValidadorPadrao {
         super(campo);
         campo.setOnFocusChangeListener((v, hasFocus) -> {
             String numero = campo.getText().toString();
-            if(hasFocus){
+            if (hasFocus) {
                 removeMascara(numero);
-            } else if (super.valida()){
+            } else if (super.valida()) {
                 mostraMascara(numero);
             }
         });
         setEmValidacao(numero -> {
 
             String numeroSemMascara = formatador.semMascara(numero);
-            if (numeroSemMascara.length() < 14 && numeroSemMascara.length() < 17) {
-                erro = LIMITE_CARACTERES;
+            if (naoEstaNoLimiteDeDigitos(numeroSemMascara)) {
+                erro = LIMITE_DIGITOS;
                 return false;
             }
 
@@ -52,7 +58,7 @@ public class ValidaNumeroCartao extends ValidadorPadrao {
                 String numeroSemMascara = formatador.semMascara(numero);
                 CreditCard cartaoDeCredito = new CreditCard(numeroSemMascara);
                 mostraMascara(numeroSemMascara);
-                int icone = 0;
+                int icone = SEM_ICONE;
                 try {
                     icone = BandeiraUtil.icone(cartaoDeCredito.getBrand());
                 } catch (Exception e) {
@@ -69,15 +75,19 @@ public class ValidaNumeroCartao extends ValidadorPadrao {
         });
     }
 
+    private boolean naoEstaNoLimiteDeDigitos(String numeroSemMascara) {
+        return numeroSemMascara.length() < DIGITOS_MINIMO || numeroSemMascara.length() > DIGITOS_MAXIMO;
+    }
+
     private void mostraMascara(String numero) {
         String numeroComMascara = formatador.comMascara(numero);
-        campo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(19)});
+        campo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(DIGITOS_COM_MASCARA)});
         campo.setText(numeroComMascara);
     }
 
     private void removeMascara(String numero) {
         String numeroSemMascara = formatador.semMascara(numero);
-        campo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(16)});
+        campo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(DIGITOS_SEM_MASCARA)});
         campo.setText(numeroSemMascara);
     }
 

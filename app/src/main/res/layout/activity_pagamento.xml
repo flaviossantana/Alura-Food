@@ -35,7 +35,9 @@
             android:id="@+id/dados_pagamento_numero_cartao"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintVertical_bias="0.0"
             android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/dados_pagamento_valor"
             app:layout_constraintStart_toStartOf="@+id/dados_pagamento_valor"
             app:layout_constraintTop_toBottomOf="@id/dados_pagamento_valor">

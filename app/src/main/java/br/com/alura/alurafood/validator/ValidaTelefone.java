@@ -7,12 +7,17 @@ import android.view.View;
 import android.widget.EditText;
 
 import br.com.alura.alurafood.formatter.Formatador;
-import br.com.alura.alurafood.formatter.formataTelefone;
+import br.com.alura.alurafood.formatter.FormataTelefone;
 
 public class ValidaTelefone extends ValidadorPadrao {
 
-    private static final String LIMITE_CARACTERES = "Precisa ter entre 10 a 11 dígitos";
-    private final Formatador formatador = new formataTelefone();
+    public static final int DIGITOS_MAXIMO = 11;
+    public static final int DIGITOS_MINIMO = 10;
+    private static final String LIMITE_CARACTERES = "Precisa ter entre " + DIGITOS_MINIMO +
+            " a " + DIGITOS_MAXIMO + " dígitos";
+    public static final int DIGITOS_SEM_MASCARA = 11;
+    public static final int DIGITOS_COM_MASCARA = 15;
+    private final Formatador formatador = new FormataTelefone();
 
     public ValidaTelefone(TextInputLayout textInputLayout) {
         this(textInputLayout.getEditText());
@@ -53,7 +58,7 @@ public class ValidaTelefone extends ValidadorPadrao {
         return telefone -> {
             String telefoneSemMascara = formatador.semMascara(telefone);
             int caracteres = telefoneSemMascara.length();
-            if (caracteres < 10 && caracteres < 12) {
+            if (naoEstaNoLimiteDeDigitos(caracteres)) {
                 erro = LIMITE_CARACTERES;
                 return false;
             }
@@ -61,15 +66,19 @@ public class ValidaTelefone extends ValidadorPadrao {
         };
     }
 
+    private boolean naoEstaNoLimiteDeDigitos(int caracteres) {
+        return caracteres < DIGITOS_MINIMO || caracteres > DIGITOS_MAXIMO;
+    }
+
     private void removeMascara(String telefone) {
         String telefoneSemMascara = formatador.semMascara(telefone);
-        campo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
+        campo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(DIGITOS_SEM_MASCARA)});
         campo.setText(telefoneSemMascara);
     }
 
     private void mostraMascara(String telefone) {
         String telefoneComMascara = formatador.comMascara(telefone);
-        campo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)});
+        campo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(DIGITOS_COM_MASCARA)});
         campo.setText(telefoneComMascara);
     }
 

@@ -1,6 +1,6 @@
 package br.com.alura.alurafood.formatter;
 
-public class formataTelefone implements Formatador {
+public class FormataTelefone implements Formatador {
 
     private static final String MASCARA = "(\\d{2})(\\d{4,5})(\\d{4})";
     private static final String FORMATO = "($1) $2-$3";

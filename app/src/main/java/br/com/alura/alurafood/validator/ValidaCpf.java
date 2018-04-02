@@ -15,7 +15,8 @@ import br.com.caelum.stella.validation.CPFValidator;
 
 public class ValidaCpf extends ValidadorPadrao {
 
-    private static final String LIMITE_CARACTERES = "CPF deve ter 11 dígitos";
+    public static final int DIGITOS_NECESSARIOS = 11;
+    private static final String LIMITE_DIGITOS = "CPF deve ter " + DIGITOS_NECESSARIOS + " dígitos";
     private static final String INVALIDO = "CPF inválido";
     private final Formatador formatador = new FormataCpf();
 
@@ -63,8 +64,8 @@ public class ValidaCpf extends ValidadorPadrao {
     private EmValidacao adicionaValidacao() {
         return cpf -> {
             String cpfSemMascara = formatador.semMascara(cpf);
-            if (cpfSemMascara.length() != 11) {
-                erro = LIMITE_CARACTERES;
+            if (naoTemDigitosNecessarios(cpfSemMascara)) {
+                erro = LIMITE_DIGITOS;
                 return false;
             }
 
@@ -77,6 +78,10 @@ public class ValidaCpf extends ValidadorPadrao {
 
             return true;
         };
+    }
+
+    private boolean naoTemDigitosNecessarios(String cpfSemMascara) {
+        return cpfSemMascara.length() != DIGITOS_NECESSARIOS;
     }
 
     private void removeMascara(String cpf) {
