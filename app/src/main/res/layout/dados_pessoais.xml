@@ -29,9 +29,9 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="@string/letras_maiusculas_minusculas_com_espaco_em_branco"
             android:hint="@string/nome_completo"
-            android:inputType="text" />
+            android:imeOptions="actionNext"
+            android:inputType="textCapWords" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -40,6 +40,7 @@
         android:id="@+id/dados_pessoais_cpf"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@id/dados_pessoais_nome"
         app:layout_constraintStart_toStartOf="@id/dados_pessoais_nome"
         app:layout_constraintTop_toBottomOf="@id/dados_pessoais_nome">
@@ -49,6 +50,7 @@
             android:layout_height="wrap_content"
             android:digits="@string/numeros"
             android:hint="@string/cpf"
+            android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="11" />
 
@@ -58,6 +60,7 @@
         android:id="@+id/dados_pessoais_telefone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@id/dados_pessoais_cpf"
         app:layout_constraintStart_toStartOf="@id/dados_pessoais_cpf"
         app:layout_constraintTop_toBottomOf="@id/dados_pessoais_cpf">
@@ -67,6 +70,7 @@
             android:layout_height="wrap_content"
             android:digits="@string/numeros"
             android:hint="@string/telefone_com_ddd"
+            android:imeOptions="actionNext"
             android:inputType="phone"
             android:maxLength="11" />
 
@@ -76,6 +80,7 @@
         android:id="@+id/dados_pessoais_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@id/dados_pessoais_telefone"
         app:layout_constraintStart_toStartOf="@id/dados_pessoais_telefone"
         app:layout_constraintTop_toBottomOf="@id/dados_pessoais_telefone">
@@ -93,6 +98,7 @@
         android:id="@+id/dados_pessoais_senha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@id/dados_pessoais_email"
         app:layout_constraintStart_toStartOf="@id/dados_pessoais_email"
         app:layout_constraintTop_toBottomOf="@id/dados_pessoais_email"
@@ -102,6 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/senha"
+            android:imeOptions="actionNext"
             android:inputType="textPassword" />
 
     </android.support.design.widget.TextInputLayout>

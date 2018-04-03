@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">AluraFood</string>
-    <string name="letras_maiusculas_minusculas_com_espaco_em_branco">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\u0020</string>
     <string name="dados_pessoais">Dados Pessoais</string>
     <string name="dados_do_endereco">Dados do endereço</string>
     <string name="numeros">1234567890</string>
-    <string name="letras_maiusculas">ABCDEFGHIJKLMNOPQRSTUVWXYZ\u0020</string>
     <string name="lupa_busca_endereco">Ícone de lupa para buscar endereço por CEP</string>
     <string name="nome_completo">Nome completo</string>
     <string name="cpf">CPF</string>
