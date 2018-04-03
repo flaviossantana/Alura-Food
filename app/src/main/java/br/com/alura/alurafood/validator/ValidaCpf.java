@@ -15,7 +15,7 @@ import br.com.caelum.stella.validation.CPFValidator;
 
 public class ValidaCpf extends ValidadorPadrao {
 
-    public static final int DIGITOS_NECESSARIOS = 11;
+    private static final int DIGITOS_NECESSARIOS = 11;
     private static final String LIMITE_DIGITOS = "CPF deve ter " + DIGITOS_NECESSARIOS + " dígitos";
     private static final String INVALIDO = "CPF inválido";
     private final Formatador formatador = new FormataCpf();

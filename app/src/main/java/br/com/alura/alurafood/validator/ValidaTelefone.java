@@ -11,12 +11,12 @@ import br.com.alura.alurafood.formatter.FormataTelefone;
 
 public class ValidaTelefone extends ValidadorPadrao {
 
-    public static final int DIGITOS_MAXIMO = 11;
-    public static final int DIGITOS_MINIMO = 10;
+    private static final int DIGITOS_MAXIMO = 11;
+    private static final int DIGITOS_MINIMO = 10;
     private static final String LIMITE_CARACTERES = "Precisa ter entre " + DIGITOS_MINIMO +
             " a " + DIGITOS_MAXIMO + " dígitos";
-    public static final int DIGITOS_SEM_MASCARA = 11;
-    public static final int DIGITOS_COM_MASCARA = 15;
+    private static final int DIGITOS_SEM_MASCARA = 11;
+    private static final int DIGITOS_COM_MASCARA = 15;
     private final Formatador formatador = new FormataTelefone();
 
     public ValidaTelefone(TextInputLayout textInputLayout) {

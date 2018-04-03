@@ -6,7 +6,7 @@ import android.widget.EditText;
 public class ValidadorPadrao implements Validador {
 
     private static final String CAMPO_OBRIGATORIO = "Campo obrigatório";
-    public static final String VAZIO = "";
+    private static final String VAZIO = "";
     final EditText campo;
     private EmValidacao emValidacao = texto -> true;
     private EstadoDeValidacao estadoDeValidacao = new EstadoDeValidacao() {
@@ -23,7 +23,7 @@ public class ValidadorPadrao implements Validador {
     String erro;
     TextInputLayout textInputLayout;
 
-    public ValidadorPadrao(EditText campo) {
+    ValidadorPadrao(EditText campo) {
         this.campo = campo;
         this.campo.setOnFocusChangeListener((v, hasFocus) -> {
             if (!hasFocus) {

@@ -11,14 +11,14 @@ import br.com.moip.validators.CreditCard;
 
 public class ValidaNumeroCartao extends ValidadorPadrao {
 
-    public static final int DIGITOS_MINIMO = 14;
-    public static final int DIGITOS_MAXIMO = 16;
+    private static final int DIGITOS_MINIMO = 14;
+    private static final int DIGITOS_MAXIMO = 16;
     private static final String CARTAO_INVALIDO = "Número de cartão de crédito inválido";
     private static final String LIMITE_DIGITOS = "Precisa ter entre " + DIGITOS_MINIMO +
             " a " + DIGITOS_MAXIMO + " dígitos";
-    public static final int DIGITOS_COM_MASCARA = 19;
-    public static final int DIGITOS_SEM_MASCARA = 16;
-    public static final int SEM_ICONE = 0;
+    private static final int DIGITOS_COM_MASCARA = 19;
+    private static final int DIGITOS_SEM_MASCARA = 16;
+    private static final int SEM_ICONE = 0;
     private final Formatador formatador = new FormataNumeroCartaoDeCredito();
 
     public ValidaNumeroCartao(TextInputLayout textInputLayout) {

@@ -1,6 +1,7 @@
 package br.com.alura.alurafood.validator;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.text.InputFilter;
 import android.view.View;
 import android.widget.EditText;
@@ -10,13 +11,18 @@ import br.com.alura.alurafood.formatter.Formatador;
 
 public class ValidaCep extends ValidadorPadrao {
 
-    public static final int DIGITOS_NECESSARIOS = 8;
+    private static final int DIGITOS_NECESSARIOS = 8;
     private static final String LIMITE_DIGITOS = "CEP deve ter " + DIGITOS_NECESSARIOS + " dígitos";
-    public static final int DIGITOS_COM_MASCARA = 9;
-    public static final int DIGITOS_SEM_MASCARA = 8;
+    private static final int DIGITOS_COM_MASCARA = 9;
+    private static final int DIGITOS_SEM_MASCARA = 8;
     private final Formatador formatador = new FormataCep();
 
-    public ValidaCep(EditText campo) {
+    public ValidaCep(TextInputLayout textInputLayout){
+        this(textInputLayout.getEditText());
+        this.textInputLayout = textInputLayout;
+    }
+
+    private ValidaCep(EditText campo) {
         super(campo);
         campo.setOnFocusChangeListener(configuraEstadoDeFoco());
         setEmValidacao(adicionaValidacao());
