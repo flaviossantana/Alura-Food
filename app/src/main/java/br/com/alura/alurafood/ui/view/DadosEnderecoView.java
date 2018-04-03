@@ -55,14 +55,14 @@ public class DadosEnderecoView {
     }
 
     private void configuraListenersCamposDadosEndereco() {
-        ValidaCep validaCep = new ValidaCep(textInputCep.getEditText());
+        ValidaCep validaCep = new ValidaCep(textInputCep);
         validadores.addAll(Arrays.asList(
                 validaCep,
-                new ValidadorPadrao(textInputLogradouro.getEditText()),
-                new ValidadorPadrao(textInputNumero.getEditText()),
-                new ValidadorPadrao(textInputBairro.getEditText()),
-                new ValidadorPadrao(textInputCidade.getEditText()),
-                new ValidadorPadrao(textInputUf.getEditText())));
+                new ValidadorPadrao(textInputLogradouro),
+                new ValidadorPadrao(textInputNumero),
+                new ValidadorPadrao(textInputBairro),
+                new ValidadorPadrao(textInputCidade),
+                new ValidadorPadrao(textInputUf)));
         configuraBotaoBuscaEndereco(validaCep);
     }
 

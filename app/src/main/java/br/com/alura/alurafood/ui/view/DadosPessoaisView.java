@@ -10,6 +10,7 @@ import java.util.List;
 import br.com.alura.alurafood.R;
 import br.com.alura.alurafood.validator.ValidaCpf;
 import br.com.alura.alurafood.validator.ValidaEmail;
+import br.com.alura.alurafood.validator.ValidaNome;
 import br.com.alura.alurafood.validator.ValidaTelefone;
 import br.com.alura.alurafood.validator.Validador;
 import br.com.alura.alurafood.validator.ValidadorPadrao;
@@ -40,7 +41,7 @@ public class DadosPessoaisView {
 
     private void configuraListenersCamposDadosPessoais() {
         validadores.addAll(Arrays.asList(
-                new ValidadorPadrao(textInputNome),
+                new ValidaNome(textInputNome),
                 new ValidaCpf(textInputCPF),
                 new ValidaTelefone(textInputTelefone),
                 new ValidaEmail(textInputEmail),

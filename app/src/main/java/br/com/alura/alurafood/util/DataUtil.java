@@ -15,8 +15,7 @@ public class DataUtil {
     }
 
     public static String formataDataBrasileira(Calendar hoje) {
-        String padraoBrasileiro = FORMATO_DATA_BRASILEIRA;
-        SimpleDateFormat formatador = new SimpleDateFormat(padraoBrasileiro, new Locale(PORTUGUES, BRASIL));
+        SimpleDateFormat formatador = new SimpleDateFormat(FORMATO_DATA_BRASILEIRA, new Locale(PORTUGUES, BRASIL));
         return formatador.format(hoje.getTime());
     }
 }

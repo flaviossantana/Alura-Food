@@ -37,9 +37,9 @@ public class FormularioPagamentoActivity extends AppCompatActivity {
     private void adicionaValidadores() {
         validadores.addAll(Arrays.asList(
                 new ValidaNumeroCartao(textInputLayoutNumeroCartao),
-                new ValidadorPadrao(textInputLayoutAnoCartao.getEditText()),
-                new ValidadorPadrao(textInputLayoutMesCartao.getEditText()),
-                new ValidadorPadrao(textInputLayoutCvcCartao.getEditText()),
+                new ValidadorPadrao(textInputLayoutAnoCartao),
+                new ValidadorPadrao(textInputLayoutMesCartao),
+                new ValidadorPadrao(textInputLayoutCvcCartao),
                 new ValidadorPadrao(textInputLayoutNomeNoCartao)
         ));
     }

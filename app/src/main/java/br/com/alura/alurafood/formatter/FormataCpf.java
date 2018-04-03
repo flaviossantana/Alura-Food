@@ -4,7 +4,7 @@ import br.com.caelum.stella.format.CPFFormatter;
 
 public class FormataCpf implements Formatador {
 
-    public static final String CARACTERES_MASCARA = "[.\\-]";
+    private static final String CARACTERES_MASCARA = "[.\\-]";
 
     @Override
     public String comMascara(String cpfSemMascara) {

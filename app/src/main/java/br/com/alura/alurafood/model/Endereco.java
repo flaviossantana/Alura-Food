@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Endereco {
 
-    public static final String CHAVE_CIDADE = "localidade";
+    private static final String CHAVE_CIDADE = "localidade";
 
     private String cep;
     private String logradouro;

@@ -5,7 +5,7 @@ import br.com.moip.creditcard.Brands;
 
 public class BandeiraUtil {
 
-    public static final String BANDEIRA_NAO_CONHECIDA = "Bandeira não conhecida";
+    private static final String BANDEIRA_NAO_CONHECIDA = "Bandeira não conhecida";
 
     private BandeiraUtil() {
     }
