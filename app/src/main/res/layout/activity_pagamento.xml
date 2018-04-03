@@ -46,6 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/numero_do_cartao"
+                android:imeOptions="actionNext"
                 android:inputType="number"
                 android:maxLength="16"
                 tools:drawableEnd="@drawable/ic_visa"
@@ -73,6 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/mm"
+                    android:imeOptions="actionNext"
                     android:inputType="number"
                     android:maxLength="2" />
             </android.support.design.widget.TextInputLayout>
@@ -88,6 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/aa"
+                    android:imeOptions="actionNext"
                     android:inputType="number"
                     android:maxLength="2" />
             </android.support.design.widget.TextInputLayout>
@@ -106,6 +109,7 @@
                     android:drawableEnd="@drawable/ic_cvc_cartao_de_credito"
                     android:drawableRight="@drawable/ic_cvc_cartao_de_credito"
                     android:hint="@string/cvc"
+                    android:imeOptions="actionNext"
                     android:inputType="number"
                     android:maxLength="4" />
 
@@ -127,6 +131,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/nome_no_cartao"
+                android:imeOptions="actionGo"
+                android:inputType="textCapWords"
                 android:maxLength="50" />
         </android.support.design.widget.TextInputLayout>
 

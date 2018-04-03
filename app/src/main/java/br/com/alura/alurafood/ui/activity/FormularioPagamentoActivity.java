@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import br.com.alura.alurafood.R;
+import br.com.alura.alurafood.validator.ValidaNome;
 import br.com.alura.alurafood.validator.ValidaNumeroCartao;
 import br.com.alura.alurafood.validator.Validador;
 import br.com.alura.alurafood.validator.ValidadorPadrao;
@@ -40,7 +41,7 @@ public class FormularioPagamentoActivity extends AppCompatActivity {
                 new ValidadorPadrao(textInputLayoutAnoCartao),
                 new ValidadorPadrao(textInputLayoutMesCartao),
                 new ValidadorPadrao(textInputLayoutCvcCartao),
-                new ValidadorPadrao(textInputLayoutNomeNoCartao)
+                new ValidaNome(textInputLayoutNomeNoCartao)
         ));
     }
 
